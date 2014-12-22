@@ -19,7 +19,6 @@ public class GUI {
 			for(int x = 0; x < 10; x++){
 				setAlive = gen.nextInt(2);
 				lifePanel[i][x] = new JPanel();
-				mainPanel.add(lifePanel[i][x]);
 				if(setAlive == 0){
 				lifePanel[i][x].setBackground(Color.white);
 				alive[i][x] = true;
@@ -27,6 +26,7 @@ public class GUI {
 					lifePanel[i][x].setBackground(Color.black);
 					alive[i][x] = false;
 				}
+				mainPanel.add(lifePanel[i][x]);
 			}
 		}
 		////////////////////////////////////////////
@@ -34,6 +34,7 @@ public class GUI {
 		window.add(mainPanel);
 		window.setVisible(true);
 		window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public boolean deadOrAlive(boolean cell,int x,int y){
 		//a dead cell with 3 live neighbors becomes alive
