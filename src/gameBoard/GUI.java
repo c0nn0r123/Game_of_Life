@@ -35,4 +35,17 @@ public class GUI {
 		window.setVisible(true);
 		window.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
+	public boolean deadOrAlive(boolean cell,int x,int y){
+		//a dead cell with 3 live neighbors becomes alive
+		//a live cell with 2 or 3 live neighbors survives
+		//any other time the cell dies or stays dead
+		int neighbors = 0;
+		if (cell){
+			
+		}
+		
+		
+		
+		return false;
+	}
 }
