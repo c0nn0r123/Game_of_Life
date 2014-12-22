@@ -39,9 +39,32 @@ public class GUI {
 		//a dead cell with 3 live neighbors becomes alive
 		//a live cell with 2 or 3 live neighbors survives
 		//any other time the cell dies or stays dead
+		//use loop -1 to 1 to loop through neighbors
 		int neighbors = 0;
 		if (cell){
-			
+			for(int i =-1;i<=1;i++){
+				for(int j = -1; j<=1;j++){
+					if(alive[x+i][y+j]){
+						neighbors++;
+					}
+				}
+			}
+			if(neighbors == 2||neighbors==3){
+				return true;
+			}else 
+				return false;
+		}else if(!cell){
+			for(int i =-1;i<=1;i++){
+				for(int j = -1; j<=1;j++){
+					if(alive[x+i][y+j]){
+						neighbors++;
+					}
+				}
+			}
+			if(neighbors == 3){
+				return true;
+			}else 
+				return false;
 		}
 		
 		
