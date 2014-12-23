@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class GUI implements ActionListener {
 	JFrame window = new JFrame("Game_of_Life");
-	JPanel mainPanel = new JPanel(new GridLayout(100,100));
+	JPanel mainPanel = new JPanel(new GridLayout(100,100,2,2));
 	JPanel[][] lifePanel = new JPanel[100][100];
 	boolean[][] alive = new boolean[100][100];
 	Timer timer = new Timer(1000, this);
@@ -20,11 +20,8 @@ public class GUI implements ActionListener {
 				lifePanel[i][x] = new JPanel();
 				if(i > 47 && i < 51 && x > 47 && x < 51){
 					lifePanel[i][x].setBackground(Color.white);
-<<<<<<< HEAD
 					alive[i][x] = true;
-=======
 					alive[i][x]=true;	
->>>>>>> origin/master
 				}else{
 					lifePanel[i][x].setBackground(Color.black);
 					alive[i][x] = false;
@@ -32,7 +29,7 @@ public class GUI implements ActionListener {
 				mainPanel.add(lifePanel[i][x]);
 				}
 			}
-		}
+		
 		////////////////////////////////////////////
 		//creating window
 		window.add(mainPanel);
@@ -51,7 +48,7 @@ public class GUI implements ActionListener {
 		if (cell){
 			for(int i =-1;i<=1;i++){
 				for(int j = -1; j<=1;j++){
-					if(((x + i >= 0) && (y + j >=0)) && ((x + i <= 99) &&  (y + j <= 99))){
+					if(((x + i >= 0) && (y + j >=0)) && ((x + i <= 99) &&  (y + j <= 99)) && !(i == 0 && j == 0 && i == j)){
 						if(alive[x+i][y+j]){
 							neighbors++;
 						}
@@ -65,7 +62,7 @@ public class GUI implements ActionListener {
 		}else if(!cell){
 			for(int i =-1;i<=1;i++){
 				for(int j = -1; j<=1;j++){
-					if(((x + i >= 0) &&  (y + j >=0)) && ((x + i <= 99) &&  (y + j <= 99))){
+					if(((x + i >= 0) &&  (y + j >=0)) && ((x + i <= 99) &&  (y + j <= 99)) && !(i == 0 && j == 0 && i == j)){
 						if(alive[x+i][y+j]){
 							neighbors++;
 						}
@@ -90,19 +87,15 @@ public class GUI implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		for(int i = 0; i < 100; i++){
 			for(int x = 0; x < 100; x++){
-<<<<<<< HEAD
 				alive[i][x] = deadOrAlive(alive[i][x],i,x);
 				if(alive[i][x])
 					lifePanel[i][x].setBackground(Color.white);
 				else
 					lifePanel[i][x].setBackground(Color.black);
 				mainPanel.updateUI();
-=======
-				deadOrAlive(alive[i][x],i,x);
-				
->>>>>>> origin/master
 			}
 		}
+		
 		System.out.println("tick");
 	}
 }
