@@ -90,7 +90,9 @@ public class GUI implements ActionListener {
 					lifePanel[i][x].setBackground(Color.white);
 				else
 					lifePanel[i][x].setBackground(Color.black);
+				mainPanel.updateUI();
 			}
-		}		
+		}
+		System.out.println("tick");
 	}
 }
