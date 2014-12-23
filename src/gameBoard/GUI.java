@@ -4,28 +4,21 @@ import javax.swing.*;
 
 import java.awt.GridLayout;
 import java.awt.Color;
-import java.util.Random;
 
 public class GUI {
-	int setAlive = 0;
-	Random gen = new Random();
 	JFrame window = new JFrame("Game_of_Life");
 	JPanel mainPanel = new JPanel(new GridLayout(100,100));
 	JPanel[][] lifePanel = new JPanel[100][100];
 	boolean[][] alive = new boolean[100][100];
 	public GUI(){
 		//creating first alive and dead panels
-		for(int i = 0; i < 10; i++){
-			for(int x = 0; x < 10; x++){
-				setAlive = gen.nextInt(2);
+		for(int i = 0; i < 100; i++){
+			for(int x = 0; x < 100; x++){
 				lifePanel[i][x] = new JPanel();
-				if(setAlive == 0){
-				lifePanel[i][x].setBackground(Color.white);
-				alive[i][x] = true;
-				}else{
+				if(i > 47 && i < 51 && x > 47 && x < 51)
+					lifePanel[i][x].setBackground(Color.white);
+				else
 					lifePanel[i][x].setBackground(Color.black);
-					alive[i][x] = false;
-				}
 				mainPanel.add(lifePanel[i][x]);
 			}
 		}
@@ -67,7 +60,6 @@ public class GUI {
 			}else 
 				return false;
 		}
-		
 		
 		
 		return false;
