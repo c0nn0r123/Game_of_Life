@@ -18,10 +18,13 @@ public class GUI implements ActionListener {
 		for(int i = 0; i < 100; i++){
 			for(int x = 0; x < 100; x++){
 				lifePanel[i][x] = new JPanel();
-				if(i > 47 && i < 51 && x > 47 && x < 51)
+				if(i > 47 && i < 51 && x > 47 && x < 51){
 					lifePanel[i][x].setBackground(Color.white);
-				else
+					alive[i][x] = true;
+				}else{
 					lifePanel[i][x].setBackground(Color.black);
+					alive[i][x] = false;
+				}
 				mainPanel.add(lifePanel[i][x]);
 			}
 		}
@@ -82,7 +85,11 @@ public class GUI implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		for(int i = 0; i < 100; i++){
 			for(int x = 0; x < 100; x++){
-				deadOrAlive(alive[i][x],i,x);
+				alive[i][x] = deadOrAlive(alive[i][x],i,x);
+				if(alive[i][x])
+					lifePanel[i][x].setBackground(Color.white);
+				else
+					lifePanel[i][x].setBackground(Color.black);
 			}
 		}		
 	}
