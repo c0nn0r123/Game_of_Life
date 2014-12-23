@@ -4,12 +4,15 @@ import javax.swing.*;
 
 import java.awt.GridLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GUI {
+public class GUI implements ActionListener {
 	JFrame window = new JFrame("Game_of_Life");
 	JPanel mainPanel = new JPanel(new GridLayout(100,100));
 	JPanel[][] lifePanel = new JPanel[100][100];
 	boolean[][] alive = new boolean[100][100];
+	Timer timer = new Timer(1000, this);
 	public GUI(){
 		//creating first alive and dead panels
 		for(int i = 0; i < 100; i++){
@@ -28,6 +31,7 @@ public class GUI {
 		window.setVisible(true);
 		window.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		timer.start();
 	}
 	public boolean deadOrAlive(boolean cell,int x,int y){
 
@@ -39,8 +43,10 @@ public class GUI {
 		if (cell){
 			for(int i =-1;i<=1;i++){
 				for(int j = -1; j<=1;j++){
-					if(alive[x+i][y+j]){
-						neighbors++;
+					if(((x + i >= 0) && (y + j >=0)) && ((x + i <= 99) &&  (y + j <= 99))){
+						if(alive[x+i][y+j]){
+							neighbors++;
+						}
 					}
 				}
 			}
@@ -51,8 +57,10 @@ public class GUI {
 		}else if(!cell){
 			for(int i =-1;i<=1;i++){
 				for(int j = -1; j<=1;j++){
-					if(alive[x+i][y+j]){
-						neighbors++;
+					if(((x + i >= 0) &&  (y + j >=0)) && ((x + i <= 99) &&  (y + j <= 99))){
+						if(alive[x+i][y+j]){
+							neighbors++;
+						}
 					}
 				}
 			}
@@ -61,15 +69,21 @@ public class GUI {
 			}else 
 				return false;
 		}
-<<<<<<< HEAD
-		
-		
-=======
->>>>>>> origin/master
+
 		return false;
 	}
-	public boolean onBoard (int x,int y, int i, int j){
+	/*public boolean onBoard (int x,int y, int i, int j){
 		if(x+i>=0){
 	}
+		return false;
 
+	}*/
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		for(int i = 0; i < 100; i++){
+			for(int x = 0; x < 100; x++){
+				deadOrAlive(alive[i][x],i,x);
+			}
+		}		
+	}
 }
