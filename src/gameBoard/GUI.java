@@ -85,6 +85,7 @@ public class GUI implements ActionListener {
 		for(int i = 0; i < 100; i++){
 			for(int x = 0; x < 100; x++){
 				deadOrAlive(alive[i][x],i,x);
+				
 			}
 		}		
 	}
