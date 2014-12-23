@@ -30,6 +30,7 @@ public class GUI {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public boolean deadOrAlive(boolean cell,int x,int y){
+
 		//a dead cell with 3 live neighbors becomes alive
 		//a live cell with 2 or 3 live neighbors survives
 		//any other time the cell dies or stays dead
@@ -60,8 +61,15 @@ public class GUI {
 			}else 
 				return false;
 		}
+<<<<<<< HEAD
 		
 		
+=======
+>>>>>>> origin/master
 		return false;
 	}
+	public boolean onBoard (int x,int y, int i, int j){
+		if(x+i>=0){
+	}
+
 }
