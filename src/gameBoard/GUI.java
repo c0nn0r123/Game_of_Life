@@ -20,16 +20,14 @@ public class GUI implements ActionListener {
 				lifePanel[i][x] = new JPanel();
 				if(i > 46 && i < 52 && x > 46 && x < 52){
 					lifePanel[i][x].setBackground(Color.white);
-<<<<<<< HEAD
+					
 					alive[i][x] = true;
 					alive[i][x]=true;	
-=======
 
 					alive[i][x] = true;
 
 					alive[i][x]=true;	
 
->>>>>>> origin/master
 				}else{
 					lifePanel[i][x].setBackground(Color.black);
 					alive[i][x] = false;
@@ -95,23 +93,17 @@ public class GUI implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		for(int i = 0; i < 100; i++){
 			for(int x = 0; x < 100; x++){
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 				alive[i][x] = deadOrAlive(alive[i][x],i,x);
 				if(alive[i][x])
 					lifePanel[i][x].setBackground(Color.white);
 				else
 					lifePanel[i][x].setBackground(Color.black);
 				mainPanel.updateUI();
-<<<<<<< HEAD
-=======
+
 
 				deadOrAlive(alive[i][x],i,x);
-				
 
->>>>>>> origin/master
 			}
 		}
 		
