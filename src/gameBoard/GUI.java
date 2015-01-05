@@ -13,8 +13,12 @@ public class GUI implements ActionListener {
 	JPanel mainPanel = new JPanel(new GridLayout(100,100,2,2));
 	JPanel[][] lifePanel = new JPanel[100][100];
 	boolean[][] alive = new boolean[100][100];
+<<<<<<< HEAD
 	Timer timer = new Timer(1000, this);
 	Scanner rd = new Scanner(System.in);
+=======
+	Timer timer = new Timer(2000, this);
+>>>>>>> origin/master
 	public GUI(){
 		
 		System.out.println("what Shape?");
@@ -27,7 +31,22 @@ public class GUI implements ActionListener {
 				lifePanel[i][x] = new JPanel();
 				if(i > 30 && i < 50 && x > 47 && x < 50){
 					lifePanel[i][x].setBackground(Color.white);
+<<<<<<< HEAD
 					alive[i][x] = true;	
+=======
+<<<<<<< HEAD
+					alive[i][x] = true;	
+=======
+					
+					alive[i][x] = true;
+					alive[i][x]=true;	
+
+					alive[i][x] = true;
+
+					alive[i][x]=true;	
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 				}else{
 					lifePanel[i][x].setBackground(Color.black);
 					alive[i][x] = false;
@@ -56,6 +75,7 @@ public class GUI implements ActionListener {
 				for(int j = -1; j<=1;j++){
 					if(((x + i >= 0) && (y + j >=0)) && ((x + i <= 99) &&  (y + j <= 99)) && !(i == 0 && j == 0)){// && i == j)){
 						if(alive[x+i][y+j]){
+							System.out.println("alive");
 							neighbors++;
 						}
 					}
@@ -70,6 +90,7 @@ public class GUI implements ActionListener {
 				for(int j = -1; j<=1;j++){
 					if(((x + i >= 0) &&  (y + j >=0)) && ((x + i <= 99) &&  (y + j <= 99)) && !(i == 0 && j == 0 && i == j)){
 						if(alive[x+i][y+j]){
+							System.out.println("alive");
 							neighbors++;
 						}
 					}
@@ -93,7 +114,10 @@ public class GUI implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		for(int i = 0; i < 100; i++){
 			for(int x = 0; x < 100; x++){
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/master
 				alive[i][x] = deadOrAlive(alive[i][x],i,x);
 				if(alive[i][x]){
 					lifePanel[i][x].setBackground(Color.white);
@@ -101,6 +125,9 @@ public class GUI implements ActionListener {
 				
 				}else{
 					lifePanel[i][x].setBackground(Color.black);
+<<<<<<< HEAD
+				mainPanel.updateUI();				
+=======
 					alive[i][x]=false;
 				}
 				mainPanel.updateUI();
@@ -108,6 +135,7 @@ public class GUI implements ActionListener {
 
 				//deadOrAlive(alive[i][x],i,x);
 
+>>>>>>> origin/master
 			}
 		}
 		
