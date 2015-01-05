@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 public class GUI implements ActionListener {
 	JFrame window = new JFrame("Game_of_Life");
@@ -13,21 +14,20 @@ public class GUI implements ActionListener {
 	JPanel[][] lifePanel = new JPanel[100][100];
 	boolean[][] alive = new boolean[100][100];
 	Timer timer = new Timer(1000, this);
+	Scanner rd = new Scanner(System.in);
 	public GUI(){
+		
+		System.out.println("what Shape?");
+		System.out.println("Boat, Ship, Beehive, or loaf");
+		String Shape = rd.nextLine();
+		
 		//creating first alive and dead panels
 		for(int i = 0; i < 100; i++){
 			for(int x = 0; x < 100; x++){
 				lifePanel[i][x] = new JPanel();
 				if(i > 30 && i < 50 && x > 47 && x < 50){
 					lifePanel[i][x].setBackground(Color.white);
-					
-					alive[i][x] = true;
-					alive[i][x]=true;	
-
-					alive[i][x] = true;
-
-					alive[i][x]=true;	
-
+					alive[i][x] = true;	
 				}else{
 					lifePanel[i][x].setBackground(Color.black);
 					alive[i][x] = false;
