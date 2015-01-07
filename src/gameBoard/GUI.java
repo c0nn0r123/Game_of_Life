@@ -10,9 +10,10 @@ import java.util.Scanner;
 
 public class GUI implements ActionListener {
 	JFrame window = new JFrame("Game_of_Life");
-	JPanel mainPanel = new JPanel(new GridLayout(100,100,2,2));
+	JPanel mainPanel = new JPanel(new GridLayout(100,100));
 	JPanel[][] lifePanel = new JPanel[100][100];
 	boolean[][] alive = new boolean[100][100];
+	boolean[][] tempAlive= new boolean[100][100];
 	Scanner rd = new Scanner(System.in);
 	Timer timer = new Timer(500, this);
 
@@ -63,10 +64,11 @@ public class GUI implements ActionListener {
 				alive[y][x] = true;
 			}
 		}else if(state.equalsIgnoreCase("move")){
-			if(y > 30 && y < 50 && x > 47 && x < 50){
+			if((y == 30 && (x == 20 || x == 21 || x == 22)) || (y == 31 && x == 21)){//y > 25 && y < 33 && x > 46 && x < 70){
 				alive[y][x] = true;	
 			}
-		}
+		}else
+			System.exit(0);
 	}
 	////////////////////////////////////////////
  	public boolean deadOrAlive(boolean cell,int x,int y){
@@ -81,7 +83,6 @@ public class GUI implements ActionListener {
 				for(int j = -1; j<=1;j++){
 					if(((x + i >= 0) && (y + j >=0)) && ((x + i <= 99) &&  (y + j <= 99)) && !(i == 0 && j == 0)){// && i == j)){
 						if(alive[x+i][y+j]){
-							//System.out.println("alive");
 							neighbors++;
 						}
 					}
@@ -96,7 +97,6 @@ public class GUI implements ActionListener {
 				for(int j = -1; j<=1;j++){
 					if(((x + i >= 0) &&  (y + j >=0)) && ((x + i <= 99) &&  (y + j <= 99)) && !(i == 0 && j == 0 && i == j)){
 						if(alive[x+i][y+j]){
-							//System.out.println("alive");
 							neighbors++;
 						}
 					}
@@ -115,16 +115,21 @@ public class GUI implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		for(int i = 0; i < 100; i++){
 			for(int x = 0; x < 100; x++){
-				alive[i][x] = deadOrAlive(alive[i][x],i,x);
-				if(alive[i][x]){
+				/*alive[i][x]*/tempAlive[i][x] = deadOrAlive(alive[i][x],i,x);
+				if(deadOrAlive(alive[i][x],i,x)){//alive[i][x]){
 					lifePanel[i][x].setBackground(Color.white);
-					alive[i][x]=true;
+					//alive[i][x]=true;
 				}else{
 					lifePanel[i][x].setBackground(Color.black);
-					alive[i][x]=false;
-				}	
+					//alive[i][x]=false;
+				}
 			}
 		}
+		for(int i = 0; i < 100; i++){
+			for(int x = 0; x < 100; x++){
+				alive[i][x] = tempAlive[i][x];
+			}
+		}	
 		mainPanel.updateUI();
 		System.out.println("tick");
 	}
